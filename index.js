@@ -5,9 +5,10 @@ const cors = require("cors");
 
 const app = express(); // Inicializa Express
 
-console.log("Mongo URI:", process.env.MONGO_URI); // Verifica qué imprime
+// Verifica que la variable de entorno MONGO_URI esté siendo leída correctamente
+console.log("Mongo URI:", process.env.MONGO_URI);
 
-// Conexión a MongoDB
+// Conexión a MongoDB usando la variable de entorno MONGO_URI
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -26,6 +27,3 @@ app.use("/api/products", productRoutes); // Rutas con prefijo '/api/products'
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
-
-
-
